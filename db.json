@@ -1,0 +1,160 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Felipe Oliveira",
+      "email": "ribaslipe@gmail.com",
+      "birth": "1984-07-23",
+      "cpf": "832.977.970-02",
+      "password": "123456789",
+      "profession": "Programador",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "maritalStatus": "Casado"
+    },
+    {
+      "name": "Kaue Ribas",
+      "email": "kaue@gmail.com",
+      "birth": "2010-05-15",
+      "cpf": "684.217.700-63",
+      "password": "123456789",
+      "profession": "Estudante",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "maritalStatus": "Solteiro",
+      "id": 2
+    },
+    {
+      "name": "Davi Ribas",
+      "email": "davi@gmail.com",
+      "birth": "1999-05-11",
+      "cpf": "404.213.690-78",
+      "password": "123456789",
+      "profession": "Estudante",
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "maritalStatus": "Solteiro",
+      "id": 3
+    },
+    {
+      "name": "Ana Oliveira",
+      "email": "ana@example.com",
+      "birth": "1995-06-18",
+      "cpf": "234.567.890-00",
+      "password": "ana123",
+      "profession": "Médica",
+      "city": "Porto Alegre",
+      "state": "RS",
+      "maritalStatus": "Solteira",
+      "id": 4
+    },
+    {
+      "name": "Lucas Santos",
+      "email": "lucas@example.com",
+      "birth": "1988-11-30",
+      "cpf": "543.210.987-00",
+      "password": "lucaspass",
+      "profession": "Programador",
+      "city": "Curitiba",
+      "state": "PR",
+      "maritalStatus": "Solteiro",
+      "id": 5
+    },
+    {
+      "name": "Carla Fernandes",
+      "email": "carla@example.com",
+      "birth": "2002-04-05",
+      "cpf": "765.432.109-00",
+      "password": "carla321",
+      "profession": "Estudante",
+      "city": "Fortaleza",
+      "state": "CE",
+      "maritalStatus": "Solteira",
+      "id": 6
+    },
+    {
+      "name": "Rafael Alves",
+      "email": "rafael@example.com",
+      "birth": "1992-09-20",
+      "cpf": "123.456.789-01",
+      "password": "rafael567",
+      "profession": "Engenheiro",
+      "city": "Recife",
+      "state": "PE",
+      "maritalStatus": "Casado",
+      "id": 7
+    },
+    {
+      "name": "Larissa Costa",
+      "email": "larissa@example.com",
+      "birth": "1998-02-10",
+      "cpf": "987.654.321-02",
+      "password": "larissa789",
+      "profession": "Designer",
+      "city": "Salvador",
+      "state": "BA",
+      "maritalStatus": "Solteira",
+      "id": 8
+    },
+    {
+      "name": "Thiago Rodrigues",
+      "email": "thiago@example.com",
+      "birth": "1991-07-25",
+      "cpf": "876.543.210-03",
+      "password": "thiago012",
+      "profession": "Advogado",
+      "city": "Brasília",
+      "state": "DF",
+      "maritalStatus": "Casado",
+      "id": 9
+    },
+    {
+      "name": "Fernanda Silva",
+      "email": "fernanda@example.com",
+      "birth": "2000-11-05",
+      "cpf": "765.432.109-04",
+      "password": "fernanda567",
+      "profession": "Estudante",
+      "city": "Manaus",
+      "state": "AM",
+      "maritalStatus": "Solteira",
+      "id": 10
+    },
+    {
+      "name": "Gustavo Souza",
+      "email": "gustavo@example.com",
+      "birth": "1989-04-15",
+      "cpf": "654.321.098-05",
+      "password": "gustavo345",
+      "profession": "Médico",
+      "city": "Porto Velho",
+      "state": "RO",
+      "maritalStatus": "Casado",
+      "id": 11
+    },
+    {
+      "name": "Juliana Fernandes",
+      "email": "juliana@example.com",
+      "birth": "1997-01-30",
+      "cpf": "543.210.987-06",
+      "password": "juliana678",
+      "profession": "Engenheira",
+      "city": "Florianópolis",
+      "state": "SC",
+      "maritalStatus": "Solteira",
+      "id": 12
+    },
+    {
+      "name": "Anderson Santos",
+      "email": "anderson@example.com",
+      "birth": "1993-06-12",
+      "cpf": "432.109.876-07",
+      "password": "anderson456",
+      "profession": "Programador",
+      "city": "Goiânia",
+      "state": "GO",
+      "maritalStatus": "Solteiro",
+      "id": 13
+    }
+  ]
+}

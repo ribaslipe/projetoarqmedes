@@ -1,0 +1,181 @@
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Lista de usuários</h5>
+    <div class="card-body">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <button class="btn btn-primary btn-sm" title="Adicionar" (click)="openModalUser(modalEdit, user, 'save')">
+              <i class="fas fa-plus"></i> Adicionar
+            </button>
+          </div>
+        </div>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Data de Nascimento</th>
+              <th>CPF</th>
+              <th>Profissão</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+              <th>Estado Civil</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.birth }}</td>
+              <td>{{ user.cpf }}</td>
+              <td>{{ user.profession }}</td>
+              <td>{{ user.city }}</td>
+              <td>{{ user.state }}</td>
+              <td>{{ user.maritalStatus }}</td>
+              <td>
+                <button class="btn btn-sm" title="Visualizar" (click)="openModalView(modalView, user)">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <button class="btn btn-sm" title="Editar" (click)="openModalUser(modalEdit, user, 'edit')">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm" title="Excluir" (click)="onDeleteUser(user.id)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ngb-pagination [collectionSize]="users.length" [(page)]="currentPage" [pageSize]="itemsPerPage" [maxSize]="5"
+          [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange($event)"></ngb-pagination>
+      </div>
+
+      <ng-template #modalView let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Daods do usuário</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="selectedUser">
+            <p><strong>Nome:</strong> {{ selectedUser.name }}</p>
+            <p><strong>E-mail:</strong> {{ selectedUser.email }}</p>
+            <p><strong>Data de Nascimento:</strong> {{ selectedUser.birth }}</p>
+            <p><strong>Cpf:</strong> {{ selectedUser.cpf }}</p>
+            <p><strong>Profissão:</strong> {{ selectedUser.profession }}</p>
+            <p><strong>Cidade:</strong> {{ selectedUser.city }}</p>
+            <p><strong>Estado:</strong> {{ selectedUser.state }}</p>
+            <p><strong>Estado Civil:</strong> {{ selectedUser.maritalStatus }}</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Fechar</button>
+        </div>
+      </ng-template>
+
+      <ng-template #modalEdit let-modal>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmitUser(operation)">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Editar usuário</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="editName">Nome:</label>
+              <input type="text" id="editName" class="form-control" formControlName="name">
+              <div *ngIf="userForm.get('name').invalid && (userForm.get('name').dirty || userForm.get('name').touched)"
+                class="text-danger">
+                Campo obrigatório.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editEmail">E-mail:</label>
+              <input type="email" id="editEmail" class="form-control" formControlName="email">
+              <div
+                *ngIf="userForm.get('email').invalid && (userForm.get('email').dirty || userForm.get('email').touched)"
+                class="text-danger">
+                E-mail inválido.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editBirth">Data de Nascimento:</label>
+              <input type="date" id="editBirth" class="form-control" formControlName="birth">
+              <div
+                *ngIf="userForm.get('birth').invalid && (userForm.get('birth').dirty || userForm.get('birth').touched)"
+                class="text-danger">
+                Campo obrigatório.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editCPF">CPF:</label>
+              <input type="text" id="editCPF" class="form-control" formControlName="cpf"  (input)="formatCpf($event)">
+              <div *ngIf="userForm.get('cpf').invalid && (userForm.get('cpf').dirty || userForm.get('cpf').touched)"
+                class="text-danger">
+                CPF inválido.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editPassword">Senha:</label>
+              <input type="password" id="editPassword" class="form-control" formControlName="password">
+              <div
+                *ngIf="userForm.get('password').invalid && (userForm.get('password').dirty || userForm.get('password').touched)"
+                class="text-danger">
+                Campo obrigatório.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editProfession">Profissão:</label>
+              <input type="text" id="editProfession" class="form-control" formControlName="profession">
+              <div
+                *ngIf="userForm.get('profession').invalid && (userForm.get('profession').dirty || userForm.get('profession').touched)"
+                class="text-danger">
+                Campo obrigatório.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editCity">Cidade:</label>
+              <input type="text" id="editCity" class="form-control" formControlName="city">
+              <div *ngIf="userForm.get('city').invalid && (userForm.get('city').dirty || userForm.get('city').touched)"
+                class="text-danger">
+                Campo obrigatório.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editState">Estado:</label>
+              <input type="text" id="editState" class="form-control" formControlName="state">
+              <div
+                *ngIf="userForm.get('state').invalid && (userForm.get('state').dirty || userForm.get('state').touched)"
+                class="text-danger">
+                Campo obrigatório.
+              </div>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="editMaritalStatus">Estado Civil:</label>
+              <input type="text" id="editMaritalStatus" class="form-control" formControlName="maritalStatus">
+              <div
+                *ngIf="userForm.get('maritalStatus').invalid && (userForm.get('maritalStatus').dirty || userForm.get('maritalStatus').touched)"
+                class="text-danger">
+                Campo obrigatório.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Salvar</button>
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Fechar</button>
+          </div>
+        </form>
+    </ng-template>
+  </div>

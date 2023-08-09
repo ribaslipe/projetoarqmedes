@@ -1,0 +1,43 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      Login
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          placeholder="Seu Email"
+          type="text"
+          id="username" class="fadeIn second"
+          formControlName="username"
+          [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+        />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">O e-mail é obrigatório.</div>
+          <div *ngIf="f.username.errors.email">E-mail inválido.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          placeholder="Sua Senha"
+          type="password"
+          class="fadeIn third"
+          id="password"
+          formControlName="password"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+        />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">A senha é obrigatória.</div>
+          <div *ngIf="f.password.errors.minlength">A senha deve ter pelo menos 6 caracteres.</div>
+        </div>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="Entrar">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Perdeu sua senha?</a>
+    </div>
+  </div>
+</div>
