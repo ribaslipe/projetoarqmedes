@@ -6,6 +6,7 @@ import { cpfValidator } from 'src/app/shared/cpf.validator';
 import {  NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -74,7 +75,6 @@ export class ListUsersComponent {
 
   async onSubmitUser(type: any) {
     if (this.userForm.valid) {
-
       if(type == 'edit'){
         const editedUser: Usuario = { ...this.selectedUser, ...this.userForm.value };
         this.usersService.updateUser(editedUser).subscribe(

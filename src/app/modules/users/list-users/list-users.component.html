@@ -30,6 +30,7 @@
         <table class="table table-striped">
           <thead>
             <tr>
+              <th>Ações</th>
               <th>ID</th>
               <th>Nome</th>
               <th>Email</th>
@@ -39,20 +40,10 @@
               <th>Cidade</th>
               <th>Estado</th>
               <th>Estado Civil</th>
-              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let user of filteredUsers.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
-              <td>{{ user.id }}</td>
-              <td>{{ user.name }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.birth }}</td>
-              <td>{{ user.cpf }}</td>
-              <td>{{ user.profession }}</td>
-              <td>{{ user.city }}</td>
-              <td>{{ user.state }}</td>
-              <td>{{ user.maritalStatus }}</td>
               <td>
                 <button class="btn btn-sm" title="Visualizar" (click)="openModalView(modalView, user)">
                   <i class="fas fa-eye"></i>
@@ -64,6 +55,15 @@
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </td>
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.birth | date }}</td>
+              <td>{{ user.cpf }}</td>
+              <td>{{ user.profession }}</td>
+              <td>{{ user.city }}</td>
+              <td>{{ user.state }}</td>
+              <td>{{ user.maritalStatus }}</td>
             </tr>
           </tbody>
         </table>
