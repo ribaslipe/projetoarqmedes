@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ListUsersComponent {
   users: Usuario[] = [];
   user: Usuario | any;
+  userToDelete: Usuario | any;
   userForm: FormGroup | any;
   currentPage: number = 1;
   itemsPerPage: number = 5;
@@ -22,6 +23,8 @@ export class ListUsersComponent {
   operation: string | any;
   closeResult = '';
   searchTerm = '';
+  id = 0;
+  deleteConfirmationModalVisible = false;
 
   constructor(private usersService: UsersService, private formBuilder: FormBuilder, private modalService: NgbModal,private toastr: ToastrService) {}
 
@@ -56,13 +59,22 @@ export class ListUsersComponent {
     );
   }
 
-  onDeleteUser(id: number) {
-    const confirmed = confirm('Tem certeza que deseja excluir o usuário?');
-    if (confirmed) {
-      this.usersService.deleteUser(id).subscribe(
+  onDeleteUser(content: any, user: Usuario) {
+    this.userToDelete = user;
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+			(result) => {
+				this.closeResult = result;
+			},
+			(reason) => {
+			},
+		);
+  }
+  DeleteUser(){
+      this.usersService.deleteUser(this.userToDelete.id).subscribe(
         () => {
-          this.users = this.users.filter((user) => user.id !== id);
-          this.toastr.success('Usuário cadastrado com sucesso!.', 'Projeto Arq');
+          this.users = this.users.filter((user) => this.userToDelete.id !== this.id);
+          this.toastr.success('Usuário deletado com sucesso!.', 'Projeto Arq');
+          this.modalService.dismissAll();
           this.loadUsers();
         },
         (error) => {
@@ -70,7 +82,7 @@ export class ListUsersComponent {
           console.error(error);
         }
       );
-    }
+
   }
 
   async onSubmitUser(type: any) {

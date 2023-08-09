@@ -49,18 +49,6 @@
       "id": 4
     },
     {
-      "name": "Rafaela Oliveira",
-      "email": "rafaela@gmail.com",
-      "birth": "1988-11-30",
-      "cpf": "789.654.321-45",
-      "password": "qwertyuiop",
-      "profession": "Advogada",
-      "city": "Recife",
-      "state": "PE",
-      "maritalStatus": "Solteira",
-      "id": 5
-    },
-    {
       "name": "Gustavo Souza",
       "email": "gustavo@gmail.com",
       "birth": "1992-07-18",
@@ -121,18 +109,6 @@
       "id": 10
     },
     {
-      "name": "Patricia Ferreira",
-      "email": "patricia@gmail.com",
-      "birth": "1986-06-08",
-      "cpf": "901.234.567-89",
-      "password": "paty789",
-      "profession": "Psicóloga",
-      "city": "Manaus",
-      "state": "AM",
-      "maritalStatus": "Casada",
-      "id": 11
-    },
-    {
       "name": "Rodrigo Oliveira",
       "email": "rodrigo@gmail.com",
       "birth": "1991-12-03",
@@ -143,18 +119,6 @@
       "state": "GO",
       "maritalStatus": "Casado",
       "id": 12
-    },
-    {
-      "name": "Camila Santos",
-      "email": "camila@gmail.com",
-      "birth": "1984-08-17",
-      "cpf": "123.456.789-01",
-      "password": "camila123",
-      "profession": "Nutricionista",
-      "city": "Porto Alegre",
-      "state": "RS",
-      "maritalStatus": "Solteira",
-      "id": 13
     }
   ]
 }

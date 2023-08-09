@@ -14,16 +14,16 @@
         <br>
         <div class="row">
           <div class="col-4">
-              <div class="input-group">
-                  <input class="form-control custom-search-input" [(ngModel)]="searchTerm" placeholder="Pesquisar por nome">
-                  <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">
-                          <i class="fas fa-search"></i>
-                      </button>
-                  </div>
+            <div class="input-group">
+              <input class="form-control custom-search-input" [(ngModel)]="searchTerm" placeholder="Pesquisar por nome">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="fas fa-search"></i>
+                </button>
               </div>
+            </div>
           </div>
-      </div>
+        </div>
 
 
         <br>
@@ -51,7 +51,7 @@
                 <button class="btn btn-sm" title="Editar" (click)="openModalUser(modalEdit, user, 'edit')">
                   <i class="fas fa-edit"></i>
                 </button>
-                <button class="btn btn-sm" title="Excluir" (click)="onDeleteUser(user.id)">
+                <button class="btn btn-sm" title="Excluir" (click)="onDeleteUser(deleteModal,user)">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </td>
@@ -194,5 +194,21 @@
             <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Fechar</button>
           </div>
         </form>
+      </ng-template>
+
+      <<ng-template #deleteModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Confirmar Exclusão</h4>
+          <button type="button" class="close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Tem certeza que deseja excluir o usuário {{ userToDelete.name }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="DeleteUser()">Excluir</button>
+        </div>
       </ng-template>
     </div>
