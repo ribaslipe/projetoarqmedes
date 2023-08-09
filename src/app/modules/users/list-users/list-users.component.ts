@@ -20,6 +20,7 @@ export class ListUsersComponent {
   selectedUser: any;
   operation: string | any;
   closeResult = '';
+  searchTerm = '';
 
   constructor(private usersService: UsersService, private formBuilder: FormBuilder, private modalService: NgbModal,private toastr: ToastrService) {}
 
@@ -46,6 +47,12 @@ export class ListUsersComponent {
       state: ['', Validators.required],
       maritalStatus: ['', Validators.required],
     });
+  }
+
+  get filteredUsers() {
+    return this.users.filter(user =>
+      user.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 
   onDeleteUser(id: number) {

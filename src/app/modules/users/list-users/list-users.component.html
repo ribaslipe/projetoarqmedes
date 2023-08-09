@@ -11,7 +11,22 @@
             </button>
           </div>
         </div>
+        <br>
+        <div class="row">
+          <div class="col-4">
+              <div class="input-group">
+                  <input class="form-control custom-search-input" [(ngModel)]="searchTerm" placeholder="Pesquisar por nome">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button">
+                          <i class="fas fa-search"></i>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
 
+
+        <br>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -28,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
+            <tr *ngFor="let user of filteredUsers.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)">
               <td>{{ user.id }}</td>
               <td>{{ user.name }}</td>
               <td>{{ user.email }}</td>
@@ -52,8 +67,10 @@
             </tr>
           </tbody>
         </table>
-        <ngb-pagination [collectionSize]="users.length" [(page)]="currentPage" [pageSize]="itemsPerPage" [maxSize]="5"
-          [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange($event)"></ngb-pagination>
+        <div class="d-flex justify-content-center">
+          <ngb-pagination [collectionSize]="users.length" [(page)]="currentPage" [pageSize]="itemsPerPage" [maxSize]="5"
+            [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChange($event)"></ngb-pagination>
+        </div>
       </div>
 
       <ng-template #modalView let-modal>
@@ -116,7 +133,7 @@
             <br>
             <div class="form-group">
               <label for="editCPF">CPF:</label>
-              <input type="text" id="editCPF" class="form-control" formControlName="cpf"  (input)="formatCpf($event)">
+              <input type="text" id="editCPF" class="form-control" formControlName="cpf" (input)="formatCpf($event)">
               <div *ngIf="userForm.get('cpf').invalid && (userForm.get('cpf').dirty || userForm.get('cpf').touched)"
                 class="text-danger">
                 CPF inválido.
@@ -177,5 +194,5 @@
             <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Fechar</button>
           </div>
         </form>
-    </ng-template>
-  </div>
+      </ng-template>
+    </div>
