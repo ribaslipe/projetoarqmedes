@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "name": "Felipe Oliveira",
+      "name": "Felipe Ribas",
       "email": "ribaslipe@gmail.com",
       "birth": "1984-07-23",
       "cpf": "832.977.970-02",
@@ -143,18 +143,6 @@
       "state": "SC",
       "maritalStatus": "Solteira",
       "id": 12
-    },
-    {
-      "name": "Anderson Santos",
-      "email": "anderson@example.com",
-      "birth": "1993-06-12",
-      "cpf": "432.109.876-07",
-      "password": "anderson456",
-      "profession": "Programador",
-      "city": "Goiânia",
-      "state": "GO",
-      "maritalStatus": "Solteiro",
-      "id": 13
     }
   ]
 }
